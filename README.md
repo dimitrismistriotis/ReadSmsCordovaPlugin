@@ -8,15 +8,20 @@ Setup
 
 1. Copy Java file from src folder to the src folder or your project.
 2. In config.xml (under "res/xml"), register the plugin (see also "res/xml/config.additional.xml"):
+
 ```xml
     <plugin name="ReadSms" value="net.webootu.cordova.plugin.ReadSms" />
 ```
+
 3. Add the following lines in your AndroidManifest.additional.xml (see also AndroidManifest.additional.xml):
+
 ```xml
 <!-- Additional permission for ReadSms plugin -->
 <uses-permission android:name="android.permission.READ_SMS" />
 ```
+
 4. Call can be made using the [Cordova plugin invocation/interface](http://docs.phonegap.com/en/2.3.0/guide_plugin-development_index.md.html#Plugin%20Development%20Guide):
+
 ```javascript
 // GetTexts action:
 cordova.exec(function(winParam) {}, function(error) {}, "ReadSms", "GetTexts", [phoneNumber, numberOfTextsToRead]);

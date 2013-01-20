@@ -8,7 +8,9 @@ Setup
 
 1. Copy Java file from src folder to the src folder or your project.
 2. In config.xml (under "res/xml"), register the plugin (see also "res/xml/config.additional.xml"):
+```xml
     <plugin name="ReadSms" value="net.webootu.cordova.plugin.ReadSms" />
+```
 3. Add the following lines in your AndroidManifest.additional.xml (see also AndroidManifest.additional.xml):
 ```xml
 <!-- Additional permission for ReadSms plugin -->

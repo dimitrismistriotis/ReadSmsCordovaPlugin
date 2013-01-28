@@ -32,35 +32,62 @@
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
                 <!-- additional functionality -->
+                <script type="text/javascript" src="json2.js"></script>
                 <h2>Read Sms plugin</h2>
                 <p>
-                    <script type="text/javascript" src="json2.js"></script>
-                    <a href="#" onclick="readSmsDemo();return false;">Read Sms Demo</a>
+                    <a href="#" onclick="readSmsDemo();return false;">Read Sms Demo</a><br /><br />
                     <script type="text/javascript">
-                    readSmsDemo = function() {
-                        cordova.exec(function(winParam) {
-                                // Use the following line if json2 library is present.
-                                // Available from Douglas Crockford's github page here:
-                                // https://github.com/douglascrockford/JSON-js/blob/master/json2.js
-                                console.log( JSON.stringify(winParam) );
-                                alert(winParam.phone_number + " number of messages retrieved: "
-                                    + winParam.texts.length);
-                                for (var i = 0; i < winParam.texts.length; i++) {
-                                    alert(JSON.stringify(winParam.texts[i]));
+                        readSmsDemo = function() {
+                            cordova.exec(function(winParam) {
+                                    // Use the following line if json2 library is present.
+                                    // Available from Douglas Crockford's github page here:
+                                    // https://github.com/douglascrockford/JSON-js/blob/master/json2.js
+                                    console.log( JSON.stringify(winParam) );
+                                    alert(winParam.phone_number + " number of messages retrieved: "
+                                        + winParam.texts.length);
+                                    for (var i = 0; i < winParam.texts.length; i++) {
+                                        alert(JSON.stringify(winParam.texts[i]));
+                                    }
                                 }
-                            }
-                            , function(error) {
-                                alert("An error has occurred");
-                                console.log("An error has occurred");
-                                // Please refer to previous comment about json2 library.
-                                console.log( JSON.stringify(error) );
-                            }
-                            , "ReadSms"
-                             ,"GetTexts"
-                             , ["999999999999", -9]);
-                    }
+                                , function(error) {
+                                    alert("An error has occurred");
+                                    console.log("An error has occurred");
+                                    // Please refer to previous comment about json2 library.
+                                    console.log( JSON.stringify(error) );
+                                }
+                                , "ReadSms"
+                                ,"GetTexts"
+                                , ["999999999999", -9]);
+                        }
                     </script>
-                
+                </p>
+                <h2>Read Sms plugin - After</h2>
+                <p>
+                    <a href="#" onclick="readSmsAfterDemo();return false;">Read Sms After Demo</a><br /><br />
+                    <script type="text/javascript">
+                        readSmsAfterDemo = function() {
+                            cordova.exec(function(winParam) {
+                                    // Use the following line if json2 library is present.
+                                    // Available from Douglas Crockford's github page here:
+                                    // https://github.com/douglascrockford/JSON-js/blob/master/json2.js
+                                    console.log( JSON.stringify(winParam) );
+                                    alert(winParam.phone_number + " number of messages retrieved: "
+                                        + winParam.texts.length);
+                                    for (var i = 0; i < winParam.texts.length; i++) {
+                                        alert(JSON.stringify(winParam.texts[i]));
+                                    }
+                                }
+                                , function(error) {
+                                    alert("An error has occurred");
+                                    console.log("An error has occurred");
+                                    // Please refer to previous comment about json2 library.
+                                    console.log( JSON.stringify(error) );
+                                }
+                                , "ReadSms"
+                                ,"GetTexts"
+                                , ["999999999999", 1358538770262]);
+                        }
+                    </script>
                 </p>
             </div>
         </div>

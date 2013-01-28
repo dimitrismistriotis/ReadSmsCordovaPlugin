@@ -25,19 +25,29 @@ Setup
 ```javascript
 // GetTexts action:
 cordova.exec(function(winParam) {}, function(error) {}, "ReadSms", "GetTexts", [phoneNumber, numberOfTextsToRead]);
+// GetTextsAfter action:
+cordova.exec(function(winParam) {}, function(error) {}, "ReadSms", "GetTextsAfter", [phoneNumber, timeStamp]);
 ```
 
 Read Actions section for input parameters.
 
 Actions
 -------
-Currently only one action is available, "GetTexts", there is the intention to add more in the future.
+Currently there are two actions available, "GetTexts" and "GetTextsAfter".
+
+**GetTexts**
 
 "GetTexts" is being called with two parameters: mandatory phoneNumber and optional numberOfTextsToRead.
 * First parameter "phoneNumber" is the number of the phone from which we want to read texts messages from. This means messages stored in the inbox of the user's phone.  Please also note that Android distinguishes between numbers containing the international "+" sign, so "+9999999999" is different from "09999999999" (leading zero).
 * Second parameter is "numberOfTextsToRead". A positive integer is used for maximum results returned, while a non-positive one is used to flag that all stored messages will be retrieved. Prefer to use "-1" instead of a random negative number of zero, in order to make your code future proof from possible extensions.
 
 Results are being retrieved in descending order on time received, so last one will be the first one to be retrieved, etc.
+
+**GetTextsAfter**
+
+"GetTextsAfter" accepts two mandatory followed by two optional parameters. Mandatory ones are "phoneNumber" followed by "timeStamp". Specifically:
+* "phoneNumber", as in "GetTexts" is the phone number as described above (mandatory).
+* Phone number is followed by the time stamp in Unix epoch format, after which received texts will be returned (mandatory).
 
 Results
 -------

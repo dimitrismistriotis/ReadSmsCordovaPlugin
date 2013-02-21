@@ -120,17 +120,19 @@ public class ReadSms extends CordovaPlugin {
         String[] smsNo = new String[] { numberToCheck };
 
         String sortOrder = "date DESC"
-            + ((numberOfTexts == READ_ALL) ? "" : " limit " + numberOfTexts);
+                + ((numberOfTexts == READ_ALL) ? "" : " limit " + numberOfTexts);
 
         Cursor cursor = contentResolver.query(Uri.parse("content://sms/inbox"), null,
-            "address=?", smsNo, sortOrder);
+                "address=?", smsNo, sortOrder);
 
         JSONArray results = new JSONArray();
         while (cursor.moveToNext()) {
             JSONObject current = new JSONObject();
             try {
-                current.put("time_received", cursor.getString(4));
-                current.put("message", cursor.getString(11));
+                current.put("time_received", cursor.getString(cursor.getString(cursor.getColumnIndex("date")));
+                current.put("message", cursor.getString(cursor.getColumnIndex("body")));
+                Log.d(TAG, "time: " + cursor.getString(cursor.getColumnIndex("date"))
+                        + " message: " + cursor.getString(cursor.getColumnIndex("body")));
             } catch (JSONException e) {
                 e.printStackTrace();
                 current.put("error", new String("Error reading text"));
@@ -155,9 +157,10 @@ public class ReadSms extends CordovaPlugin {
         while (cursor.moveToNext()) {
             JSONObject current = new JSONObject();
             try {
-                current.put("time_received", cursor.getString(4));
-                current.put("message", cursor.getString(11));
-                Log.d(TAG, "time: " + cursor.getString(4) + " message: " + cursor.getString(11));
+                current.put("time_received", cursor.getString(cursor.getColumnIndex("date")));
+                current.put("message", cursor.getString(cursor.getColumnIndex("body")));
+                Log.d(TAG, "time: " + cursor.getString(cursor.getColumnIndex("date"))
+                    + " message: " + cursor.getString(cursor.getColumnIndex("body")));
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.e(TAG, "Error reading text", e);

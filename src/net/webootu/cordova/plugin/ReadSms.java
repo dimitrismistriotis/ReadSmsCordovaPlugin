@@ -129,7 +129,7 @@ public class ReadSms extends CordovaPlugin {
         while (cursor.moveToNext()) {
             JSONObject current = new JSONObject();
             try {
-                current.put("time_received", cursor.getString(cursor.getColumnIndex("date"));
+                current.put("time_received", cursor.getString(cursor.getColumnIndex("date")));
                 current.put("message", cursor.getString(cursor.getColumnIndex("body")));
                 Log.d(TAG, "time: " + cursor.getString(cursor.getColumnIndex("date"))
                         + " message: " + cursor.getString(cursor.getColumnIndex("body")));
